@@ -19,8 +19,8 @@ Example:  python problem1.py
 ---------------------------
 Expected Output
 ---------------------------
-problem1.py - 120536
-problem2.py - 0.5832354352640003
+problem1.py - Combinations: 120536, Time: 0.0020003318786621094 seconds
+problem2.py - Probability of Gregor winning: 0.5832354352640003, Time: 0.0029985904693603516 seconds
 problem3.py - unfinished
 
 
@@ -28,3 +28,4 @@ problem3.py - unfinished
 Required External Modules
 ---------------------------
 -numpy
+-scipy

@@ -1,4 +1,5 @@
 from scipy.special import comb
+import time
 
 
 # Calculates the roll probability of one number
@@ -30,4 +31,7 @@ def calculate_winning_probability(player1, player2):
 if __name__ == '__main__':
     player1_gregor = {'num_dice': 8, 'max_die_value': 5}
     player2_oberyn = {'num_dice': 4, 'max_die_value': 10}
-    print(calculate_winning_probability(player1_gregor, player2_oberyn))
+    start_time = time.time()
+    answer = calculate_winning_probability(player1_gregor, player2_oberyn)
+    end_time = time.time()
+    print("Probability of Gregor winning: {}, Time: {} seconds".format(answer, end_time - start_time))

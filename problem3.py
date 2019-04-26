@@ -1,6 +1,6 @@
 import numpy as np
 
-
+# Method to attempt to implement Hungarian Algorithm
 def matrix_max(M):
     max_value_index = np.argmax(M, axis=1)
     max_values = M[np.arange(len(M)), max_value_index].reshape((-1, 1))
@@ -26,7 +26,6 @@ def matrix_max(M):
     while ~assignment_matrix[np.arange(len(M)), max_value_index].all():
 
         assignment_matrix = get_assignment_matrix(M)
-        print(assignment_matrix)
         max_value_index = np.argmax(M, axis=1)
         row_marks = ~assignment_matrix.any(axis=1)
         column_marks = np.zeros(len(M), dtype=bool)
@@ -35,12 +34,10 @@ def matrix_max(M):
             row_marks[row] = np.array_equal(column_marks, assignment_matrix[row, :]) or row_marks[row]
 
         new_max_value = np.amax(M[row_marks.reshape((-1, 1)) & ~column_marks])
-        print(new_max_value, row_marks, column_marks)
         M[row_marks.reshape((-1, 1)) & ~column_marks] -= new_max_value
         M[~row_marks.reshape((-1, 1)) & column_marks] += new_max_value
 
         max_values = original[np.arange(len(M)), max_value_index].reshape((-1, 1))
-        print(M, max_value_index, max_values)
     return int(sum(max_values))
 
 

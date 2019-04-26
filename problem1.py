@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 
 # Number of combinations using coins in array unob_coins that come to the total. D is the reference array to store answers
@@ -18,8 +19,11 @@ def change_combinations(unob_coins, total, D):
 def bootstrap_combinations(unob_coins, total):
     D = np.array(range(len(unob_coins) * (total + 1))).reshape((len(unob_coins), (total + 1)))
     D[:] = -1
-    print(change_combinations(unob_coins, total, D))
+    return change_combinations(unob_coins, total, D)
 
 
 if __name__ == '__main__':
-    bootstrap_combinations([1, 5, 10, 20, 50, 100], 500)
+    start_time = time.time()
+    answer = bootstrap_combinations([1, 5, 10, 20, 50, 100], 500)
+    end_time = time.time()
+    print("Combinations: {}, Time: {} seconds".format(answer, end_time-start_time))
